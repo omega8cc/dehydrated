@@ -8,7 +8,7 @@ you will quickly hit these limits and find yourself locked out.
 To avoid this, please set the CA property to the Let’s Encrypt staging server URL in your config file:
 
 ```bash
-CA="https://acme-staging.api.letsencrypt.org/directory"
+CA="https://acme-staging-v02.api.letsencrypt.org/directory"
 ```
 
 # ACMEv2 staging
