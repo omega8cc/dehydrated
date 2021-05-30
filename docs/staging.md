@@ -11,7 +11,4 @@ To avoid this, please set the CA property to the Let’s Encrypt staging server 
 CA="https://acme-staging-v02.api.letsencrypt.org/directory"
 ```
 
-# ACMEv2 staging
-
-You can use `CA="https://acme-staging-v02.api.letsencrypt.org/directory"` to test dehydrated with
-the ACMEv2 staging endpoint.
+Alternatively you can define the CA using the CLI argument `--ca letsencrypt-test` (`letsencrypt-test` is an integrated preset-CA corresponding to the URL above).
