@@ -71,7 +71,7 @@ Parameters:
  --ca url/preset                  Use specified CA URL or preset
  --alias certalias                Use specified name for certificate directory (and per-certificate config) instead of the primary domain (only used if --domain is specified)
  --keep-going (-g)                Keep going after encountering an error while creating/renewing multiple certificates in cron mode
- --force (-x)                     Force renew of certificate even if it is longer valid than value in RENEW_DAYS
+ --force (-x)                     Force certificate renewal even if it is not due to expire within RENEW_DAYS
  --force-validation               Force revalidation of domain names (used in combination with --force)
  --no-lock (-n)                   Don't use lockfile (potentially dangerous!)
  --lock-suffix example.com        Suffix lockfile name with a string (useful for with -d)
@@ -86,3 +86,9 @@ Parameters:
  --challenge (-t) http-01|dns-01|tls-alpn-01 Which challenge should be used? Currently http-01, dns-01, and tls-alpn-01 are supported
  --algo (-a) rsa|prime256v1|secp384r1 Which public key algorithm should be used? Supported: rsa, prime256v1 and secp384r1
 ```
+
+## Chat
+
+Dehydrated has an official IRC-channel `#dehydrated` on libera.chat that can be used for general discussion and suggestions.
+
+The channel can also be accessed with Matrix using the official libera.chat bridge at `#dehydrated:libera.chat`.
