@@ -2,7 +2,14 @@
 This file contains a log of major changes in dehydrated
 
 ## [x.x.x] - xxxx-xx-xx
-...
+## Added
+- Implemented support for certificate profile selection
+
+## Changed
+- Renew certificates with 32 days remaining (instead of 30) to avoid issues with monthly cronjobs (`RENEW_DAYS=32`)
+
+## Fixed
+- Changed behaviour of `openssl req` stdin handling to fix compatibility with OpenSSL version 3.2+
 
 ## [0.7.1] - 2022-10-31
 ## Changed
