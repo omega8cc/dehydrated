@@ -1139,7 +1139,7 @@ sign_csr() {
     challenge="$(echo "${response}" | get_json_dict_value -p '"challenges",'"${challengeindex}")"
 
     # Gather challenge information
-    if [ "${identifier_type:-}" = "ip" ] && [ "${CHALLENGETYPE}" = "tls-alpn-01" ] ; then
+    if [ "${identifier_type:-}" = "ip" ] && [ "${CHALLENGETYPE}" = "tls-alpn-01" ]; then
       challenge_names[${idx}]="$(echo "${identifier}" | ip_to_ptr)"
     else
       challenge_names[${idx}]="${identifier}"
@@ -1811,7 +1811,7 @@ command_sign_domains() {
 
       certnames="$("${OPENSSL}" x509 -in "${cert}" -text -noout | grep -E '(DNS|IP( Address*)):' | _sed 's/(DNS|IP( Address)*)://g' | tr -d ' ' | tr ',' '\n' | sort -u | tr '\n' ' ' | _sed 's/ $//')"
       givennames="$(echo "${domain}" "${morenames}"| tr ' ' '\n' | sort -u | tr '\n' ' ' | _sed 's/ip://g' | _sed 's/ $//' | _sed 's/^ //')"
- 
+
       if [[ "${certnames}" = "${givennames}" ]]; then
         echo " unchanged."
       else
