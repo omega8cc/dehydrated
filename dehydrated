@@ -788,7 +788,7 @@ init_system() {
           echo "ZeroSSL requires contact email to be set or EAB_KID/EAB_HMAC_KEY to be manually configured"
           FAILED=true
         else
-          zeroapi="$(curl ${ip_version:-} ${CURL_OPTS} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" -s "https://api.zerossl.com/acme/eab-credentials-email" -d "email=${CONTACT_EMAIL}" | jsonsh)"
+          zeroapi="$(curl ${ip_version:-} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" ${CURL_OPTS} -s "https://api.zerossl.com/acme/eab-credentials-email" -d "email=${CONTACT_EMAIL}" | jsonsh)"
           EAB_KID="$(printf "%s" "${zeroapi}" | get_json_string_value eab_kid)"
           EAB_HMAC_KEY="$(printf "%s" "${zeroapi}" | get_json_string_value eab_hmac_key)"
           if [[ -z "${EAB_KID:-}" ]] ||  [[ -z "${EAB_HMAC_KEY:-}" ]]; then
@@ -976,14 +976,14 @@ http_request() {
   set +e
   # shellcheck disable=SC2086
   if [[ "${1}" = "head" ]]; then
-    statuscode="$(curl ${ip_version:-} ${CURL_OPTS} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" -s -w "%{http_code}" -o "${tempcont}" -H 'Cache-Control: no-cache' "${2}" -I)"
+    statuscode="$(curl ${ip_version:-} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" ${CURL_OPTS} -s -w "%{http_code}" -o "${tempcont}" -H 'Cache-Control: no-cache' "${2}" -I)"
     curlret="${?}"
     touch "${tempheaders}"
   elif [[ "${1}" = "get" ]]; then
-    statuscode="$(curl ${ip_version:-} ${CURL_OPTS} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" -L -s -w "%{http_code}" -o "${tempcont}" -D "${tempheaders}" -H 'Cache-Control: no-cache' "${2}")"
+    statuscode="$(curl ${ip_version:-} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" ${CURL_OPTS} -L -s -w "%{http_code}" -o "${tempcont}" -D "${tempheaders}" -H 'Cache-Control: no-cache' "${2}")"
     curlret="${?}"
   elif [[ "${1}" = "post" ]]; then
-    statuscode="$(curl ${ip_version:-} ${CURL_OPTS} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" -s -w "%{http_code}" -o "${tempcont}" "${2}" -D "${tempheaders}" -H 'Cache-Control: no-cache' -H 'Content-Type: application/jose+json' -d "${3}")"
+    statuscode="$(curl ${ip_version:-} -A "dehydrated/${VERSION} curl/${CURL_VERSION}" ${CURL_OPTS} -s -w "%{http_code}" -o "${tempcont}" "${2}" -D "${tempheaders}" -H 'Cache-Control: no-cache' -H 'Content-Type: application/jose+json' -d "${3}")"
     curlret="${?}"
   else
     set -e
