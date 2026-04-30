@@ -1248,7 +1248,7 @@ sign_csr() {
 
     if [ -z "${challengeindex}" ]; then
       allowed_validations="$(echo "${response}" | grep -E '^\["challenges",[0-9]+,"type"\]' | sed -e 's/\[[^\]*\][[:space:]]*//g' -e 's/^"//' -e 's/"$//' | tr '\n' ' ')"
-      _exiterr "Validating this certificate is not possible using ${CHALLENGETYPE}. Possible validation methods are: ${allowed_validations}"
+      _exiterr "Validating this certificate is not possible using ${CHALLENGETYPE}. Possible validation methods are: ${allowed_validations}. Please check with your CA for more information about supported validation methods."
     fi
     challenge="$(echo "${response}" | get_json_dict_value -p '"challenges",'"${challengeindex}")"
 
