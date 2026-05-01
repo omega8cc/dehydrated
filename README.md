@@ -1,22 +1,25 @@
-# dehydrated [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
+<a href="https://zerossl.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://github.com/dehydrated-io/dehydrated/blob/master/docs/banner-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="https://github.com/dehydrated-io/dehydrated/blob/master/docs/banner-light.svg" /><img alt="ZeroSSL" src="https://github.com/dehydrated-io/dehydrated/blob/master/docs/banner-light.svg" width="100%" /></picture></a>
 
-![](docs/logo.png)
+<img align="left" src="https://github.com/dehydrated-io/dehydrated/blob/master/docs/logo.png" />
 
-Dehydrated is a client for signing certificates with an ACME-server (e.g. Let's Encrypt) implemented as a relatively simple (zsh-compatible) bash-script.
+Dehydrated is a client for signing certificates with an ACME-server (e.g. ZeroSSL, Let's Encrypt, etc.) implemented as a relatively simple (zsh-compatible) bash-script.
 This client supports both ACME v1 and the new ACME v2 including support for wildcard certificates!
 
 It uses the `openssl` utility for everything related to actually handling keys and certificates, so you need to have that installed.
 
 Other dependencies are: cURL, sed, grep, awk, mktemp (all found pre-installed on almost any system, cURL being the only exception).
 
-Current features:
+<br clear="left"/>
+
+## Current features
+
 - Signing of a list of domains (including wildcard domains!)
 - Signing of a custom CSR (either standalone or completely automated using hooks!)
 - Renewal if a certificate is about to expire or defined set of domains changed
 - Certificate revocation
 - and lots more..
 
-Please keep in mind that this software, the ACME-protocol and all supported CA servers out there are relatively young and there might be a few issues. Feel free to report any issues you find with this script or contribute by submitting a pull request,
+Feel free to report any issues you find with this script or contribute by submitting a pull request,
 but please check for duplicates first (feel free to comment on those to get things rolling).
 
 ## Getting started
@@ -83,7 +86,7 @@ Parameters:
  --preferred-chain issuer-cn      Use alternative certificate chain identified by issuer CN
  --out (-o) certs/directory       Output certificates into the specified directory
  --alpn alpn-certs/directory      Output alpn verification certificates into the specified directory
- --challenge (-t) http-01|dns-01|tls-alpn-01 Which challenge should be used? Currently http-01, dns-01, and tls-alpn-01 are supported
+ --challenge (-t) http-01|dns-01|dns-persist-01|tls-alpn-01 Which challenge should be used? Currently http-01, dns-01, dns-persist-01 and tls-alpn-01 are supported
  --algo (-a) rsa|prime256v1|secp384r1 Which public key algorithm should be used? Supported: rsa, prime256v1 and secp384r1
  --acme-profile profile_name      Use specified ACME profile
  --order-timeout seconds          Amount of seconds to wait for processing of order until erroring out
@@ -95,3 +98,17 @@ Parameters:
 Dehydrated has an official IRC-channel `#dehydrated` on libera.chat that can be used for general discussion and suggestions.
 
 The channel can also be accessed with Matrix using the official libera.chat bridge at `#dehydrated:libera.chat`.
+
+## About this repository
+> [!NOTE]
+> This repository is officially maintained by <strong>ZeroSSL</strong> as part of our commitment to secure and reliable SSL/TLS solutions. We welcome contributions and feedback from the community!  
+> For more information about our services, including free and paid SSL/TLS certificates, visit https://zerossl.com.
+<p align="center">
+	<a href="https://zerossl.com">
+		<picture>
+			<source media="(prefers-color-scheme: dark)" srcset="https://zerossl.com/assets/images/zerossl_logo_white.svg">
+			<source media="(prefers-color-scheme: light)" srcset="https://zerossl.com/assets/images/zerossl_logo.svg">
+			<img src="https://zerossl.com/assets/images/zerossl_logo.svg" alt="ZeroSSL" width="256">
+		</picture>
+	</a>
+</p>
